@@ -4,7 +4,6 @@ from datetime import datetime
 
 # ==============================
 # Personal Expense Tracker (CLI)
-# Week 2 - Part 1
 # ==============================
 
 FILE_NAME = "expenses.csv"
@@ -178,12 +177,13 @@ def search_expense():
 
         if keyword in row[1].lower() or keyword in row[2].lower():
 
-            print("{:<12} {:<15} {:<25} ₹{:>8}".format(
+            print("{:<12} {:<15} {:<25} ₹{:>8.2f}".format(
                 row[0],
                 row[1],
                 row[2],
-                row[3]
-            ))
+                float(row[3])
+                )
+            )
 
             found = True
 
@@ -196,6 +196,10 @@ def search_expense():
 
 # Total Expense
 def total_expense():
+
+    if not os.path.exists(FILE_NAME):
+        print("Expense file not found.")
+        return
 
     total = 0
 
@@ -214,6 +218,10 @@ def total_expense():
 
 # Category Summary
 def category_summary():
+
+    if not os.path.exists(FILE_NAME):
+        print("Expense file not found.")
+        return
 
     title()
 
@@ -260,6 +268,10 @@ def category_summary():
 
     # Edit Expense
 def edit_expense():
+
+    if not os.path.exists(FILE_NAME):
+        print("Expense file not found.")
+        return
 
     title()
 
@@ -318,6 +330,10 @@ def edit_expense():
 # Delete Expense
 def delete_expense():
 
+    if not os.path.exists(FILE_NAME):
+        print("Expense file not found.")
+        return
+
     title()
 
     with open(FILE_NAME, "r") as file:
@@ -353,6 +369,10 @@ def delete_expense():
 
 # Monthly Summary
 def monthly_summary():
+
+    if not os.path.exists(FILE_NAME):
+        print("Expense file not found.")
+        return
 
     title()
 
