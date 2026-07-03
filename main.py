@@ -182,12 +182,12 @@ def search_expense():
                 row[1],
                 row[2],
                 float(row[3])
-                )
-            )
+                ))
 
             found = True
 
     if not found:
+
 
         print("No matching expense found.")
 
@@ -206,8 +206,7 @@ def total_expense():
     with open(FILE_NAME, "r") as file:
 
         reader = csv.reader(file)
-
-        next(reader)
+        next(reader, None)
 
         for row in reader:
 
